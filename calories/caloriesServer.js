@@ -6,25 +6,25 @@ app.use(express.json())
 let balance = 0.0;
 let transactions=[];
 
-app.get('/atm/getBalance', function (req, res) {
+app.get('/calories/getCurrentCalories', function (req, res) {
     console.log(req.body);
     res.json({balance:balance});
 });
 
-app.get('/atm/getHistory', function (req, res) {
+app.get('/calories/getChanges', function (req, res) {
     res.json(transactions);
 });
 
-app.post('/atm/deposit', function (req, res) {
+app.post('/calories/caloriesGained', function (req, res) {
     if (transact(req.body, true)) {
         res.json({balance:balance});
     }
     else {
-        res.json({error: "Please provide a name and an amount"});
+        res.json({error: "Please provide a name and an amount of calories"});
     }
 });
 
-app.post('/atm/withdraw', function (req, res) {
+app.post('/calories/caloriesBurned', function (req, res) {
     if (transact(req.body, false)) {
         res.json({balance:balance});
     }
