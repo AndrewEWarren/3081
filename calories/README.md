@@ -23,7 +23,7 @@ Use Postman, CURL, or other program to call the following functions:
    *This returns the total number of calories eaten today.
    *No JSON is required.
   * GET - http://127.0.0.1:8092/calories/getChanges
-   * This returns the food is eaten today, workouts, and calorie change.
+       * This returns the food is eaten today, workouts, and calorie change.
    * No JSON is required.
   * POST - http://127.0.0.1:8092/calories/caloriesGained
    *This adds a food item and a number of calories.
