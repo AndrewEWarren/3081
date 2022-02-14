@@ -9,4 +9,4 @@ RUN npm install express
 RUN npm install request
 
 COPY . /usr/app
-CMD node /usr/app/server.js
+CMD node /usr/app/calorieCounterServer.js
