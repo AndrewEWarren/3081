@@ -3,21 +3,21 @@ var request = require('request');
 var app = express();
 app.use(express.json())
 
-let balance = 0.0;
-let transactions=[];
+let calories = 0.0;
+let tracked=[];
 
 app.get('/calories/getCurrentCalories', function (req, res) {
     console.log(req.body);
-    res.json({balance:balance});
+    res.json({calories:calories});
 });
 
 app.get('/calories/getChanges', function (req, res) {
-    res.json(transactions);
+    res.json(tracked);
 });
 
 app.post('/calories/caloriesGained', function (req, res) {
-    if (transact(req.body, true)) {
-        res.json({balance:balance});
+    if (track(req.body, true)) {
+        res.json({calories:calories});
     }
     else {
         res.json({error: "Please provide a name and an amount of calories"});
@@ -25,26 +25,26 @@ app.post('/calories/caloriesGained', function (req, res) {
 });
 
 app.post('/calories/caloriesBurned', function (req, res) {
-    if (transact(req.body, false)) {
-        res.json({balance:balance});
+    if (track(req.body, false)) {
+        res.json({calories:calories});
     }
     else {
         res.json({error: "Please provide a name and an amount"});
     }
 });
 
-function transact(trans, deposit) {
+function track(trans, deposit) {
     if ("name" in trans && "amount" in trans && typeof trans.amount === 'number') {
         trans.time=Date.now();
         if (deposit) {
             trans.type="deposit";
-            balance += trans.amount;
+            calories += trans.amount;
         }
         else {
             trans.type="withdraw";
-            balance -= trans.amount;
+            calories -= trans.amount;
         }
-        transactions.push(trans);
+        tracked.push(trans);
         return true;
     }
     else {
