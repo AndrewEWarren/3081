@@ -20,14 +20,14 @@ From the command line start the server with the following command:
 Use Postman, CURL, or other program to call the following functions:
 
   * GET - http://127.0.0.1:8092/calories/getCurrentCalories
-       *This returns the total number of calories eaten today.
-       *No JSON is required.
+       * This returns the total number of calories eaten today.
+       * No JSON is required.
   * GET - http://127.0.0.1:8092/calories/getChanges
        * This returns the food is eaten today, workouts, and calorie change.
        * No JSON is required.
   * POST - http://127.0.0.1:8092/calories/caloriesGained
-       *This adds a food item and a number of calories.
-       *Use this JSON formate to name the food and give the amount of calories to add to the total calories.
+       * This adds a food item and a number of calories.
+       * Use this JSON formate to name the food and give the amount of calories to add to the total calories.
   ```
   {
     "name" : "Salad",
@@ -35,7 +35,7 @@ Use Postman, CURL, or other program to call the following functions:
   }
   ```
   * POST - http://127.0.0.1:8092/calories/caloriesBurned
-       *Use this JSON formate to name the food and give the amount of calories to add to the total calories.
+       * Use this JSON formate to name the food and give the amount of calories to add to the total calories.
   ```
   {
     "name" : "Sit-Ups",
@@ -43,7 +43,7 @@ Use Postman, CURL, or other program to call the following functions:
   }
   ```
   * POST - http://127.0.0.1:8092//calories/caloriesCleared
-       *Resets calories to zero, food and workouts are cleared and ready for the next day.
+       * Resets calories to zero, food and workouts are cleared and ready for the next day.
 
 ## Running via Docker
 
