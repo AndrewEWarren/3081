@@ -33,15 +33,22 @@ app.post('/calories/caloriesBurned', function (req, res) {
     }
 });
 
+app.post('/calories/caloriesCleared', function (req, res) {
+    calories = 0.0;
+    tracked=[];
+    res.json({calories:calories});
+    res.json(tracked);
+});
+
 function track(trans, deposit) {
     if ("name" in trans && "amount" in trans && typeof trans.amount === 'number') {
         trans.time=Date.now();
         if (deposit) {
-            trans.type="deposit";
+            trans.type="caloriesGained";
             calories += trans.amount;
         }
         else {
-            trans.type="withdraw";
+            trans.type="caloriesBurned";
             calories -= trans.amount;
         }
         tracked.push(trans);
