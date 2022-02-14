@@ -29,21 +29,21 @@ app.post('/calories/caloriesBurned', function (req, res) {
         res.json({calories:calories});
     }
     else {
-        res.json({error: "Please provide a name and an amount"});
+        res.json({error: "Please provide a name and an amount of calories"});
     }
 });
 
 app.post('/calories/caloriesCleared', function (req, res) {
     calories = 0.0;
-    tracked=[];
+    tracked.length = 0;
     res.json({calories:calories});
     res.json(tracked);
 });
 
-function track(trans, deposit) {
+function track(trans, change) {
     if ("name" in trans && "amount" in trans && typeof trans.amount === 'number') {
         trans.time=Date.now();
-        if (deposit) {
+        if (change) {
             trans.type="caloriesGained";
             calories += trans.amount;
         }
@@ -62,5 +62,4 @@ function track(trans, deposit) {
 var server = app.listen(8092, function () {
    var host = server.address().address
    var port = server.address().port
-   console.log("Example app listening at http://%s:%s", host, port)
 });
