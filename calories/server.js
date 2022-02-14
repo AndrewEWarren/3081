@@ -3,7 +3,7 @@ var request = require('request');
 var app = express();
 app.use(express.json())
 
-let balance = 100.0;
+let balance = 0.0;
 let transactions=[];
 
 app.get('/atm/getBalance', function (req, res) {
@@ -52,7 +52,7 @@ function transact(trans, deposit) {
     }
 }
 
-var server = app.listen(8081, function () {
+var server = app.listen(8092, function () {
    var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
